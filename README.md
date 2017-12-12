@@ -1,0 +1,2 @@
+# Manifold
+About Manifold configuration.
