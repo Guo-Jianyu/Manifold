@@ -1,0 +1,28 @@
+
+制作镜像
+mkdir ~/manifold
+cd manifold
+sudo tar -xvpzf ~/Downloads/manifold_image_v1.0.tar.gz
+
+cd ~/manifold/Linux_for_Tegra/bootloader
+sudo mv system.img system_bak.img
+sudo ./nvflash --read APP system.img --bl ardbeg/fastboot.bin --go
+
+
+恢复出厂设置 flash successfully
+
+cd ~/manifold/Linux_for_Tegra
+sudo ./flash.sh jetson-tk1 mmcblk0p1
+
+
+恢复之前制作镜像操作  flash successfully
+cd ~/manifold/Linux_for_Tegra
+sudo ./flash.sh -r jetson-tk1 mmcblk0p1
+
+装载镜像指令
+cd ~/manifold/Linux_for_Tegra/bootloader
+ls
+sudo mount -t ext4 -o loop system.img /mnt
+cd /mnt
+ls
+sudo umount /mnt
